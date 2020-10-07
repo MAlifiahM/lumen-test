@@ -21,7 +21,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'fullname', 'email',
     ];
 
     /**
@@ -30,6 +30,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password', 'token', 'device'
     ];
+
+    public function phone() {
+        return $this->hasOne('App\Models\Phone');
+    }
 }
